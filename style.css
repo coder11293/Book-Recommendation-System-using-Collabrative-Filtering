@@ -1,0 +1,619 @@
+/* ============================================================
+   Book Recommendation System — style.css
+   Design: Deep midnight editorial with amber gold accents
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
+
+/* ── Global Reset ──────────────────────────────────────────── */
+html, body, [class*="css"] {
+    font-family: 'DM Sans', sans-serif !important;
+}
+
+/* Allow scrolling — never clip or hide overflow on root elements */
+html, body {
+    overflow: auto !important;
+    height: auto !important;
+}
+
+#MainMenu, footer, header { visibility: hidden; }
+
+.block-container {
+    padding: 2.5rem 3rem 5rem !important;
+    max-width: 1400px !important;
+    overflow: visible !important;
+}
+
+/* ── App wrapper ───────────────────────────────────────────── */
+.stApp {
+    background-attachment: scroll !important;
+}
+
+/* Overlay via a non-fixed pseudo element approach — 
+   we apply darkness directly through the background color blend */
+.main-overlay {
+    background: rgba(8, 7, 6, 0.0); /* handled by background-color on stApp */
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,200,90,0.35); }
+
+/* ── Main content area ──────────────────────────────────────── */
+[data-testid="stAppViewContainer"] {
+    overflow: auto !important;
+}
+
+[data-testid="stMain"] {
+    overflow: auto !important;
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+[data-testid="stSidebar"] {
+    background: rgba(10, 9, 8, 0.95) !important;
+    backdrop-filter: blur(16px) !important;
+    border-right: 1px solid rgba(255, 200, 90, 0.12) !important;
+    height: 100vh !important;
+    width: 21rem !important;
+    overflow-y: auto !important;
+    position: relative !important;
+}
+
+[data-testid="stSidebar"] > div:first-child {
+    padding: 0.6rem 0.8rem !important;
+    height: 100% !important;
+}
+
+/* Remove all gaps in sidebar content */
+[data-testid="stSidebar"] * {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Brand */
+.brand-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f5d78e;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    margin: 0 !important;
+}
+
+.brand-sub {
+    font-size: 0.55rem;
+    color: #5a5650;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 !important;
+}
+
+.sidebar-hr {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    margin: 0.3rem 0 !important;
+}
+
+/* User badge */
+.user-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,200,90,0.07);
+    border: 1px solid rgba(255,200,90,0.15);
+    border-radius: 6px;
+    padding: 4px 6px;
+    margin: 0 !important;
+}
+
+.user-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d4a847, #9a6e10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.user-name {
+    font-size: 0.75rem;
+    color: #d8d0c4;
+    font-weight: 500;
+}
+
+.user-role {
+    font-size: 0.55rem;
+    color: #5a5650;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* Sidebar nav buttons */
+[data-testid="stSidebar"] .stButton > button {
+    background: transparent !important;
+    border: none !important;
+    color: #8a8278 !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 0.78rem !important;
+    font-weight: 400 !important;
+    text-align: left !important;
+    padding: 4px 6px !important;
+    border-radius: 5px !important;
+    width: 100% !important;
+    transition: background 0.15s, color 0.15s !important;
+    letter-spacing: 0.01em !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+[data-testid="stSidebar"] .stButton > button:hover {
+    background: rgba(255,200,90,0.08) !important;
+    color: #f5d78e !important;
+    transform: none !important;
+}
+
+/* Sidebar auth inputs */
+[data-testid="stSidebar"] .stTextInput input {
+    background: rgba(255,255,255,0.05) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-radius: 8px !important;
+    color: #e0d8cc !important;
+    font-size: 0.84rem !important;
+    padding: 9px 12px !important;
+    transition: border-color 0.2s !important;
+}
+
+[data-testid="stSidebar"] .stTextInput input:focus {
+    border-color: rgba(245, 215, 142, 0.5) !important;
+    box-shadow: none !important;
+}
+
+[data-testid="stSidebar"] .stTextInput input::placeholder {
+    color: rgba(255,255,255,0.2) !important;
+}
+
+[data-testid="stSidebar"] .stTextInput label {
+    color: #5a5650 !important;
+    font-size: 0.7rem !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+}
+
+/* Sidebar auth action buttons (Login / Create Account) */
+[data-testid="stSidebar"] [data-testid="stForm"] .stButton > button,
+[data-testid="stSidebar"] .stButton:last-of-type > button {
+    background: linear-gradient(135deg, #c9a030, #8c6a10) !important;
+    color: #fff !important;
+    font-weight: 500 !important;
+    border-radius: 8px !important;
+    letter-spacing: 0.04em !important;
+    box-shadow: 0 3px 12px rgba(180, 130, 20, 0.3) !important;
+    margin-top: 4px !important;
+    transform: none !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stForm"] .stButton > button:hover,
+[data-testid="stSidebar"] .stButton:last-of-type > button:hover {
+    background: linear-gradient(135deg, #ddb040, #a07820) !important;
+    color: #fff !important;
+    transform: none !important;
+}
+
+/* Sidebar tabs */
+[data-testid="stSidebar"] .stTabs [data-baseweb="tab-list"] {
+    background: rgba(255,255,255,0.05) !important;
+    border-radius: 8px !important;
+    padding: 3px !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    gap: 2px !important;
+}
+
+[data-testid="stSidebar"] .stTabs [data-baseweb="tab"] {
+    color: #5a5650 !important;
+    font-size: 0.78rem !important;
+    border-radius: 6px !important;
+    padding: 6px 14px !important;
+    transition: all 0.2s !important;
+}
+
+[data-testid="stSidebar"] .stTabs [aria-selected="true"] {
+    background: linear-gradient(135deg, #c9a030, #8c6a10) !important;
+    color: #fff !important;
+}
+
+/* ============================================================
+   MAIN CONTENT — Shared
+   ============================================================ */
+
+/* Page title */
+.page-title {
+    font-family: 'Playfair Display', serif;
+    float: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #f0e8d8;
+    margin-bottom: 0.3rem;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+}
+
+.page-sub {
+    font-size: 0.85rem;
+    color: #6a6460;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+}
+
+/* Selectbox */
+.stSelectbox label {
+    color: #6a6460 !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+}
+
+.stSelectbox [data-baseweb="select"] > div {
+    background: rgba(255,255,255,0.06) !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    border-radius: 10px !important;
+    color: #e0d8cc !important;
+    font-size: 0.9rem !important;
+    transition: border-color 0.2s !important;
+}
+
+.stSelectbox [data-baseweb="select"] > div:hover {
+    border-color: rgba(245,215,142,0.35) !important;
+}
+
+/* Buttons — global gold style */
+.stButton > button {
+    background: linear-gradient(135deg, #c9a030, #8c6a10) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 10px !important;
+    font-weight: 500 !important;
+    font-size: 0.88rem !important;
+    padding: 11px 24px !important;
+    letter-spacing: 0.04em !important;
+    transition: background 0.2s, box-shadow 0.2s !important;
+    box-shadow: 0 4px 16px rgba(180,130,20,0.28) !important;
+    cursor: pointer !important;
+    transform: none !important;
+}
+
+.stButton > button:hover {
+    background: linear-gradient(135deg, #ddb040, #a07820) !important;
+    box-shadow: 0 6px 22px rgba(180,130,20,0.4) !important;
+    transform: none !important;
+}
+
+.stButton > button:active {
+    transform: none !important;
+}
+
+/* Reduce button spacing in columns */
+[data-testid="stHorizontalBlock"] .stButton > button {
+    margin-bottom: 0 !important;
+}
+
+div[data-testid="column"] button {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* Divider between sections */
+.section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,200,90,0.2), transparent);
+    margin: 2rem 0;
+}
+
+/* Section heading */
+.section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: #f0e8d8;
+    font-weight: 400;
+    margin-bottom: 1.4rem;
+    letter-spacing: 0.01em;
+}
+
+/* ============================================================
+   BOOK HERO — Selected book detail
+   ============================================================ */
+
+.book-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: #f5efe0;
+    line-height: 1.25;
+    margin-bottom: 0.4rem;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+}
+
+.book-author {
+    font-size: 1rem;
+    color: #f0c060;
+    font-style: italic;
+    margin-bottom: 1.4rem;
+    letter-spacing: 0.01em;
+}
+
+.book-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.pill {
+    display: inline-block;
+    background: rgba(255,200,90,0.1);
+    border: 1px solid rgba(255,200,90,0.22);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 0.78rem;
+    color: #d4bc80;
+    letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   BOOK COVER IMAGES — FIXED CONSISTENT SIZING
+   ============================================================ */
+
+/* Hero book cover (selected book detail) */
+[data-testid="stImage"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+[data-testid="stImage"] img {
+    border-radius: 12px;
+    border: 2px solid rgba(255,200,90,0.18);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.55);
+    transition: box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+}
+
+[data-testid="stImage"] img:hover {
+    box-shadow: 0 16px 50px rgba(0,0,0,0.7);
+}
+
+/* Fix for recommendation cards — all images in columns get consistent sizing */
+[data-testid="column"] [data-testid="stImage"],
+.stHorizontalBlock [data-testid="column"] [data-testid="stImage"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+[data-testid="column"] [data-testid="stImage"] img,
+.stHorizontalBlock [data-testid="column"] [data-testid="stImage"] img {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid rgba(255,200,90,0.15);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    transition: all 0.2s ease;
+}
+
+[data-testid="column"] [data-testid="stImage"] img:hover,
+.stHorizontalBlock [data-testid="column"] [data-testid="stImage"] img:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+    border-color: rgba(245,215,142,0.3);
+}
+
+/* Ensure any image inside a container with class "rec-card" or similar is fixed */
+.rec-card-image img,
+[class*="rec-card"] img {
+    width: 100% !important;
+    max-width: 160px !important;
+    height: auto !important;
+    aspect-ratio: 2 / 3 !important;
+    object-fit: cover !important;
+    border-radius: 10px !important;
+}
+
+/* Additional guard for all images in the main content area */
+.stMain [data-testid="stImage"] img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* For images inside horizontal blocks (recommendation rows) */
+.stHorizontalBlock [data-testid="stImage"] {
+    display: flex;
+    justify-content: center;
+}
+
+.stHorizontalBlock [data-testid="stImage"] img {
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* ============================================================
+   RECOMMENDATION CARDS
+   ============================================================ */
+
+.rec-card-text {
+    padding: 8px 2px 12px;
+}
+
+.rec-title {
+    font-size: 0.8rem;
+    color: #d8d0c4;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 4px;
+    min-height: 2.2em;
+}
+
+.rec-rating {
+    font-size: 0.72rem;
+    color: #c9a84c;
+    letter-spacing: 0.02em;
+}
+
+/* Explore / View buttons inside grid columns — ghost style */
+[data-testid="column"] .stButton > button {
+    background: transparent !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    color: #8a8278 !important;
+    font-size: 0.72rem !important;
+    padding: 5px 10px !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+    letter-spacing: 0.04em !important;
+    transform: none !important;
+}
+
+[data-testid="column"] .stButton > button:hover {
+    border-color: rgba(245,215,142,0.4) !important;
+    color: #f5d78e !important;
+    background: rgba(255,200,90,0.06) !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+/* ============================================================
+   LANDING PAGE (unauthenticated)
+   ============================================================ */
+
+.landing-wrapper {
+    min-height: 72vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.landing-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.landing-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: #f5efe0;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-shadow: 0 4px 24px rgba(0,0,0,0.6);
+}
+
+.landing-cta {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 30px;
+    padding: 9px 22px;
+    background: rgba(255,255,255,0.03);
+}
+
+/* ============================================================
+   EMPTY STATES
+   ============================================================ */
+
+.empty-state {
+    margin-top: 3rem;
+    padding: 3rem 2rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px dashed rgba(255,255,255,0.1);
+    border-radius: 16px;
+    text-align: center;
+}
+
+.empty-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.6;
+}
+
+.empty-text {
+    font-size: 0.95rem;
+    color: #6a6460;
+    line-height: 1.7;
+}
+
+.empty-text strong {
+    color: #c9a84c;
+}
+
+/* ============================================================
+   ALERTS & MESSAGES
+   ============================================================ */
+
+[data-testid="stNotification"],
+.stAlert > div {
+    background: rgba(20, 18, 15, 0.85) !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    color: #c0b8ac !important;
+    font-size: 0.84rem !important;
+}
+
+/* ============================================================
+   LAYOUT FIXES
+   ============================================================ */
+
+[data-testid="stHorizontalBlock"] {
+    gap: 1rem !important;
+    align-items: flex-start !important;
+    overflow: visible !important;
+}
+
+/* Ensure every wrapper div scrolls naturally */
+[data-testid="stVerticalBlock"],
+[data-testid="stVerticalBlockBorderWrapper"] {
+    overflow: visible !important;
+    height: auto !important;
+}
+/* Additional fixes for forms */
+[data-testid="stSidebar"] .stTabs [data-baseweb="tab-list"] {
+    gap: 0.5rem !important;
+}
+
+[data-testid="stSidebar"] .stTabs [data-baseweb="tab"] {
+    font-size: 0.85rem !important;
+    padding: 8px 16px !important;
+}
+
+/* Landing page subtitle */
+.landing-subtitle {
+    color: #8a8278;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
